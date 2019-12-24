@@ -20,12 +20,16 @@ namespace StrategyEngine {
 
         
         void Update() {
+            Ray pointerRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+             
+            Physics.Raycast(pointerRay, out RaycastHit hit);
 
+            _underConstruction.SetConstructionLocation( hit.point);
         }
 
 
         void StartPlacingBuilding(IConstructable building) {
-
+            _underConstruction = building;
         }
     }
 }
