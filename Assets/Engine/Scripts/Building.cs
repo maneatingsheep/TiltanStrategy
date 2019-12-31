@@ -4,26 +4,23 @@ using UnityEngine;
 
 
 namespace StrategyEngine {
-    public class Building : MonoBehaviour, IConstructable {
+    public class Building : Constructable {
 
-        private Transform _myTransform;
-
-        void Start() {
-            _myTransform = transform;
-        }
-
-        public void Build() {
+        override public void Build() {
 
         }
 
-        public bool CheckCollision() {
+        override public bool CheckCollision() {
             return false;
         }
 
-        public void SetConstructionLocation(Vector3 buildPoint) {
+        override public void SetConstructionLocation(Vector3 buildPoint) {
             _myTransform.position = buildPoint;
         }
 
+        private void OnMouseDown() {
+            Selected(InstID, DataID);
+        }
     }
 }
 
